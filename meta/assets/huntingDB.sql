@@ -55,7 +55,7 @@ PRIMARY KEY (Trip_id, Tag_id, Hunter_id));
 CREATE TABLE Harvest_estimate(
 Liscense_year integer NOT NULL,
 District integer REFERENCES District(District_id),
-Animal text NOT NULL,
+Animal varchar(32) NOT NULL,
 Num_hunters integer,
 Residency text,
 Total_harvest integer,
