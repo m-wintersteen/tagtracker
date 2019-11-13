@@ -1,0 +1,92 @@
+/* Header CSS */
+.clear {
+    clear: both;
+}
+
+header {
+    background-color: rgba(28,68,105,.75);
+}
+
+.header-container h3{
+	color:  #ffffff;
+	font: normal 20px 'Cookie', cursive;
+	margin: 0;
+}
+
+.header-container h3 span{
+	color:  rgb(87,56,29);
+}
+
+#logo {
+    height: 100px;
+    float: left;
+    margin-top: 3px;
+    margin-left: 20px;
+}
+
+#nav {
+    margin: 0px;
+    padding: 0px;
+    text-align: right;
+    float: right;
+}
+
+#nav li {
+    display: block;
+    float: left;
+}
+
+#nav li a {
+    display: block;
+    padding: 43px 15px;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #EEE;
+    transition: all .2s linear;
+}
+
+#nav li a:hover {
+    background-color: rgb(87,56,29);
+    color:white;
+}
+
+/*Body CSS*/
+
+body {
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    margin: 0px;
+    padding: 0px;
+    background-color: #FFF;
+}
+
+.container {
+    width: 800px;
+    height 100%;
+    margin: 0 auto;
+}
+
+/*Footer CSS*/
+
+footer{
+	position: fixed;
+	bottom: 0;
+}
+
+.footer-class{
+	background-color: rgba(28,68,105,.75);
+	box-sizing: border-box;
+	width: 100%;
+	text-align: left;
+	font-family: 'Poppins', sans-serif;
+	padding: 0px 0px 0px 0px;
+	margin-top: 80px;
+}
+
+.footer-class p{
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+    color: #FFF;
+}
