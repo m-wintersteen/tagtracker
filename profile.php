@@ -11,7 +11,7 @@ session_start();
 
 
 <div class="container">
-    <button id="logout_button" onclick="window.location.href = 'meta/inc/logout.php';">Log Out</button>
+    <button id="logout_btn" onclick="window.location.href = 'meta/inc/logout.php';">Log Out</button>
     <?php
         if ( ! empty( $_POST ) ) {
             $Hunter_id = $_POST['id'];

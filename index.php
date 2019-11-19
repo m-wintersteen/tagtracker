@@ -9,23 +9,76 @@ session_start();
 
 ?>
 
+<script>
+    function switchDiv() {
+        var x = document.getElementById("signInDiv");
+        var y = document.getElementById("newHunterDiv");
+        var btn = document.getElementById("switch_btn");
+        
+        if (x.style.display === "none") {
+            x.style.display = "block";
+            y.style.display = "none";
+            btn.innerHTML = "Sign Up";
+        } else {
+            x.style.display = "none";
+            y.style.display = "block";
+            btn.innerHTML = "Log In";
+        }
+    }
+
+</script> 
+
 <div class="container">
     <?php
     if(isset( $_SESSION['id'] )){
-        echo '<button id="logout_button" onclick="window.location.href = \'meta/inc/logout.php\';">Log Out</button>Welcome Hunter! <br> '.$_SESSION["Name"];
+        echo '<button id="logout_btn" onclick="window.location.href = \'meta/inc/logout.php\';">Log Out</button><h1>Welcome '.$_SESSION["Name"]."</h1>";
+        
+        echo '<h2>Hunting Estimates</h2>';
+        echo '<form action="hunting_estimate.php" method="post">
+        Year: <input type="text" name="year">
+        <br>
+        District: <input type="text" name="district">
+        <br>
+        Animal: <input type="text" name="animal">
+        <br>
+        <input type="submit" value="Find Hunting Estimate">
+    </form>';
     } else {
-        echo '<form action="profile.php" method="post">
+        echo '<button id="switch_btn" onclick="switchDiv()">Sign Up</button>
+        <div id="signInDiv">
+        <form action="profile.php" method="post">
         Hunter ID: <input type="text" name="id">
         <br>
         Password: <input type="password" name="password">
-        <input type="submit" value="Submit">
-    </form>';
+        <br>
+        <input id="form_btm" type="submit" value="Log In">
+    </form>
+    </div>
+    <div id="newHunterDiv">
+        <form action="newHunter.php" method="post">
+        Hunter ID: <input type="text" name="id">
+        <br>
+        Password: <input type="password" name="password">
+        <br>
+        First Name: <input type="text" name="Fname">
+        <br>
+        Middle Initial: <input type="text" name="Minit">
+        <br>
+        Last Name: <input type="text" name="Lname">
+        <br>
+        Montana Resident: <input type="radio" name="Resident" value="Resident" checked>Resident
+        <input type="radio" name="Resident" value="NonResident">Non Resident
+        <br>
+        <input id="form_btm" type="submit" value="Sign Up">
+    </form>
+    </div>';
     }
     
     ?>
+    
 </div>
 
-<div class="clear"></div>
+<div class="clear"></div>  
 
 <?php 
 
