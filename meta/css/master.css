@@ -62,9 +62,23 @@ body {
 }
 
 .container {
-    width: 800px;
+    width: 1000px;
     height 100%;
     margin: 0 auto;
+}
+
+#logout_button {
+  background-color: rgb(87,56,29);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+    float: right;
 }
 
 /*Footer CSS*/

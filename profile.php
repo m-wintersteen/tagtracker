@@ -8,9 +8,10 @@ include_once './meta/assets/dbconnect.inc';
 session_start();
 
 ?>
-<button onclick="window.location.href = 'logout.php';">Log Out</button>
+
 
 <div class="container">
+    <button id="logout_button" onclick="window.location.href = 'meta/inc/logout.php';">Log Out</button>
     <?php
         if ( ! empty( $_POST ) ) {
             $Hunter_id = $_POST['id'];
