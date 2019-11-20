@@ -19,14 +19,17 @@ session_start();
         $sql = "SELECT * FROM Tags WHERE Hunter_id = ".$_SESSION["id"].";";
             
         $result = $dbConn->query($sql) or die("Data query error");
-        
         if($result-> num_rows > 0){
+            echo "<table>";
+            echo "<thead><tr><th>Tag</th><th>District</th><th>Animal</th><th>Type</th><th>Liscense</th></tr></thead><tbody>";
             while($row=$result->fetch_assoc()){
-                echo "Tag: ".$row["Tag_id"]." District: ".$row["District_id"]." Animal: ".$row["Animal"]." Type: ".$row["Bow_rifle"]." Liscense Year: ".$row["Liscense_year"]."<br>";
+                echo "<tr><td>".$row["Tag_id"]."</td><td>".$row["District_id"]."</td><td>".$row["Animal"]."</td><td>".$row["Bow_rifle"]."</td><td>".$row["Liscense_year"]."</td></tr>";
             }
+            echo "</tbody></table>";
         } else {
             echo "No tags found";
         }
+         
     } else {
         header("Location: http://localhost:8080/tagtracker/");
     }

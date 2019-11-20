@@ -61,6 +61,42 @@ body {
     background-color: #FFF;
 }
 
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+  background-color: rgb(28,68,105);
+  color: white;
+}
+
+input[type=password], select, textarea  {
+  width: 20%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+input[type=text], select, textarea  {
+  width: 20%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+form p {
+    letter-spacing: .05em;
+}
+
 .container {
     width: 1000px;
     height 100%;

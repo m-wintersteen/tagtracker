@@ -21,9 +21,12 @@ session_start();
         $result = $dbConn->query($sql) or die("Data query error");
         
         if($result-> num_rows > 0){
+            echo "<table>";
+            echo "<thead><tr><th>Trip</th><th>Tag</th><th>Harvest</th><th>Points</th><th>First Year</th><th>Days</th></tr></thead>";
             while($row=$result->fetch_assoc()){
-                echo "Trip: ".$row["Trip_id"]."Tag: ".$row["Tag_id"]."Harvest: ".$row["Harvest"]." Points: ".$row["Points"]." First Year: ".$row["First_year"]." Days: ".$row["Days"]."<br>";
+                echo "<tr><td>".$row["Trip_id"]."</td><td>".$row["Tag_id"]."</td><td>".$row["Harvest"]."</td><td>".$row["Points"]."</td><td>".$row["First_year"]."</td><td>".$row["Days"]."</td></tr>";
             }
+            echo "</tbody></table>";
         } else {
             echo "No tags found";
         }

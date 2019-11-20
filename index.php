@@ -35,12 +35,12 @@ session_start();
         
         echo '<h2>Hunting Estimates</h2>';
         echo '<form action="hunting_estimate.php" method="post">
-        Year: <input type="text" name="year">
+        <p>Year: <input type="text" name="year">
         <br>
         District: <input type="text" name="district">
         <br>
         Animal: <input type="text" name="animal">
-        <br>
+        </p>
         <input type="submit" value="Find Hunting Estimate">
     </form>';
     } else {
