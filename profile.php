@@ -12,7 +12,9 @@ session_start();
 
 <div class="container">
     <?php
-    echo '<button id="logout_btn" onclick="window.location.href = \'meta/inc/logout.php\';">Log Out</button><h1>Welcome '.$_SESSION["Name"]."</h1>";
+    if(isset( $_SESSION['id'])){
+        echo '<button id="logout_btn" onclick="window.location.href = \'meta/inc/logout.php\';">Log Out</button><h1>Welcome '.$_SESSION["Name"]."</h1>";
+    }
     
         if ( ! empty( $_POST ) ) {
             $Hunter_id = $_POST['id'];

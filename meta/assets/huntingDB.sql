@@ -21,6 +21,7 @@ Area varchar(32) NOT NULL);
 
 CREATE TABLE Hunter(
 Hunter_id integer PRIMARY KEY,
+h_password text NOT NULL,
 Fname text NOT NULL,
 Minit text,
 Lname text NOT NULL,
@@ -236,15 +237,15 @@ INSERT INTO District (District_id,Name, Area) VALUES (282,"Bob Marshall Wilderne
 (502,"Mid-Yellowstone",726.8187685),
 (361,"Gallatin/Madison",224.95168182);
 
-INSERT INTO Hunter (Hunter_id, Fname,Minit, Lname, Resident)
-VALUES  (111111, "Jeff", "L", "Baxter", "Montana"),
-        (111112, "Bill", "T", "Boible", "Montana"),
-        (111113, "Freddy", "G", "Mercury", "North Dakota"),
-        (123456, "Koch", "E", "Babcock", "Idaho"),
-        (123457, "Gooch", "F", "Hill", "Montana"),
-        (109344, "Alfred", "D", "Stucky", "Montana"),
-        (108457, "John", "Q", "Wonton", "Montana"),
-        (123467, "Beese", "M", "Churger", "Wyoming");
+INSERT INTO Hunter (Hunter_id,h_password, Fname,Minit, Lname, Resident)
+VALUES  (111111,"password", "Jeff", "L", "Baxter", "Montana"),
+        (111112,"password", "Bill", "T", "Boible", "Montana"),
+        (111113,"password", "Freddy", "G", "Mercury", "North Dakota"),
+        (123456,"password", "Koch", "E", "Babcock", "Idaho"),
+        (123457,"password", "Gooch", "F", "Hill", "Montana"),
+        (109344,"password", "Alfred", "D", "Stucky", "Montana"),
+        (108457,"password", "John", "Q", "Wonton", "Montana"),
+        (123467,"password", "Beese", "M", "Churger", "Wyoming");
 
 INSERT INTO Tags (Tag_id, Hunter_id,District_id, Animal, Bow_rifle, Liscense_year)
 VALUES  (0001, 111111, 314, "Elk Bull", "Rifle", 2019),
