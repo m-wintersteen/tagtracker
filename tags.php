@@ -19,6 +19,7 @@ session_start();
         $sql = "SELECT * FROM Tags WHERE Hunter_id = ".$_SESSION["id"].";";
             
         $result = $dbConn->query($sql) or die("Data query error");
+        
         if($result-> num_rows > 0){
             echo "<table>";
             echo "<thead><tr><th>Tag</th><th>District</th><th>Animal</th><th>Type</th><th>Liscense</th></tr></thead><tbody>";

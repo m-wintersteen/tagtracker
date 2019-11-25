@@ -28,7 +28,7 @@ session_start();
             }
             echo "</tbody></table>";
         } else {
-            echo "No tags found";
+            echo "No hunting trips found";
         }
     } else {
         header("Location: http://localhost:8080/tagtracker/");
