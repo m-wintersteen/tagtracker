@@ -13,13 +13,25 @@ session_start();
 <div class="container">
     <?php
         if ( ! empty( $_POST ) ) {
-            $year = $_POST['year'];
-            $district = $_POST['district'];
-            $animal = $_POST['animal'];
+            $options = [
+            "Liscense_year" => $_POST['year'],
+            "District" => $_POST['district'],
+            "Animal" => $_POST['animal'] 
+            ];
             
-            $sql = "SELECT * FROM Harvest_estimate WHERE Liscense_year = ".$year." AND District = ".$district." AND Animal = '".$animal."';";
+            $sql = "SELECT * FROM Harvest_estimate WHERE ";
             
-            echo $sql;
+            foreach($options as $i => $value){
+                if($value != NULL){
+                    if(!is_numeric($value)){
+                        $sql = $sql.$i." = '".$value."' AND ";
+                    }
+                    else{
+                        $sql = $sql.$i." = ".$value." AND ";
+                    }
+                }
+            }
+            $sql = substr($sql, 0, -5);
             
             $result = $dbConn->query($sql) or die("Data query error");
             
