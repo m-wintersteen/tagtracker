@@ -34,6 +34,8 @@ PRIMARY KEY (Tag_id,Hunter_id,District_id));
 
 CREATE TABLE Employee(
 Ssn integer PRIMARY KEY,
+Employee_id text NOT NULL,
+e_password text NOT NULL,
 Fname text NOT NULL,
 Minit text,
 Lname text NOT NULL,
