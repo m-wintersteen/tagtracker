@@ -51,7 +51,7 @@ session_start();
         <br>
         Password: <input type="password" name="password">
         <br>
-        <input id="form_btm" type="submit" value="Log In">
+        <input class="form_btn" type="submit" value="Log In">
     </form>
     </div>
     <div id="newHunterDiv">
@@ -69,7 +69,7 @@ session_start();
         Montana Resident: <input type="radio" name="Resident" value="Resident" checked>Resident
         <input type="radio" name="Resident" value="NonResident">Non Resident
         <br>
-        <input id="form_btm" type="submit" value="Sign Up">
+        <input class="form_btn" type="submit" value="Sign Up">
     </form>
     </div>';
     }

@@ -1,7 +1,3 @@
-/*
- * Copied from movieDBScript
- * We need to change this to make it how the hunting database should be
- */
 
 /* Delete the tables if they already exist */
 drop table if exists District;
@@ -257,12 +253,12 @@ VALUES  (0001, 111111, 314, "Elk Bull", "Rifle", 2019),
         (0007, 123457, 314, "White Tail Deer Doe", "Rifle", 2018),
         (0008, 123457, 314, "Elk Cow", "Bow", 2020);
 
-INSERT INTO Employee (Ssn, Fname, Minit, Lname, Hours_worked)
-VALUES  (000112222, "Saul", "T", "Bowser", "40"),
-        (111223333, "Jackson", "A", "Woofer", "20"),
-        (222334444, "Thomas", "D", "Woofer", "32"),
-        (123456789, "Caleb", "West", "Couser", NULL),
-        (123455432, "Andrew", "C", "Dixon", "3");
+INSERT INTO Employee (Ssn, Fname, Minit, Lname, Hours_worked, Employee_id, e_password)
+VALUES  (000112222, "Saul", "T", "Bowser", "40","sbowser","password"),
+        (111223333, "Jackson", "A", "Woofer", "20","jwoofer","password"),
+        (222334444, "Thomas", "D", "Woofer", "32","twoofer","password"),
+        (123456789, "Caleb", "West", "Couser", NULL,"ccouser","password"),
+        (123455432, "Andrew", "C", "Dixon", "3","adixon","password");
 
 INSERT INTO Hunting_trip(Trip_id, Tag_id, Hunter_id, ESsn, Harvest, Points, First_year)
 VALUES  (001, 0002, 111111, 000112222, "true", 16, "false"),
