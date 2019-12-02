@@ -37,11 +37,11 @@ session_start();
             
             if($result-> num_rows > 0){
                 echo "<table>";
-                echo "<thead><tr><th>Liscense Year</th><th>District</th><th>Animal</th><th>Number of Hunters</th><th>Residency</th><th>Total Harvest</th><th>Days Hunted</th><th>Number of Males</th><th>Number of Females</th><th>Number of First Years</th><th>Number of Points</th></tr></thead><tbody>";
+                echo "<thead><tr><th>Liscense Year</th><th>District</th><th>Animal</th><th>Number of Hunters</th><th>Residency</th><th>Total Harvest</th><th>Days Hunted</th><th>Number of Males</th><th>Number of Females</th><th>Number of First Years</th></tr></thead><tbody>";
                 while($row=$result->fetch_assoc()){
                     echo "<tr><td>".$row["Liscense_year"]."</td><td>".$row["District"]."</td><td>".$row["Animal"]."</td><td>".$row["Num_hunters"]."</td><td>".$row["Residency"]."</td><td>".$row["Total_harvest"]."</td>
                     <td>".$row["Days_hunted"]."</td>
-                    <td>".$row["Num_males"]."</td><td>".$row["Num_females"]."</td><td>".$row["Num_first_years"]."</td><td>".$row["Num_points"]."</td></tr>";
+                    <td>".$row["Num_males"]."</td><td>".$row["Num_females"]."</td><td>".$row["Num_first_years"]."</td></tr>";
             }
                 echo "</tbody></table>";
             } else {
