@@ -94,6 +94,12 @@ th {
   color: white;
 }
 
+select.tag_dropdown {
+    width:auto;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+}
+
 input[type=password], select, textarea  {
   width: 20%;
   padding: 12px;

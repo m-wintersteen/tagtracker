@@ -44,32 +44,46 @@ session_start();
         <input type="submit" value="Find Hunting Estimate">
     </form></div>';
         
+        echo '<div id="newHuntingTrip"><h2>Record a New Hunting Trip</h2>
+        <form action="newHuntingTrip.php" method="post">
+        <div class="dropdown"><p>Tags
+        <select class="tag_dropdown" name="tags">';
         
         //Get tags from current year
         $currentYear = date("Y");
-        
+
         $sql = "SELECT * FROM Tags WHERE Liscense_year = ".$currentYear." AND Hunter_id = ".$_SESSION['id'].";";
-        
+
         $result = $dbConn->query($sql) or die("Data query error");
-        
+
         $tags = array();
-        
+        $tagDesc = array();
+
         if($result-> num_rows > 0){
             while($row=$result->fetch_assoc()){
-                array_push($tags,$row["Animal"]);
+                array_push($tags,$row["Tag_id"]);
+                $desc = "#".$row["Tag_id"]." Dist.".$row["District_id"]." ".ucfirst($row["Animal"])." ".ucfirst($row["Sex"]);
+                array_push($tagDesc,$desc);
             }
         }
         
-        echo '<div id="newHuntingTrip"><h2>Record a New Hunting Trip</h2>
-        <form action="newHuntingTrip.php" method="post">
-        <p>Tags
-        <select name="tags">';
-        
-        foreach($tags as $tag){
-            echo '<option value="'.$tag.'">'.$tag.'</option>';
+        foreach($tags as $i => $tag){
+            echo '<option value="'.$tag.'">'.$tagDesc[$i].'</option>';
         } 
         echo '</select>
+        </div>
+        Number of Days Hunted: <input type="text" name="Days">
+        <br>
+        Number of Points: <input type="text" name="Num_points">
+        <br>
+        Did you Harvest?  <input type="radio" name="Harvest" value="true" checked>Yes
+        <input type="radio" name="Harvest" value="false">No
+        <br>
+        First Year?  <input type="radio" name="First_year" value="true" checked>Yes
+        <input type="radio" name="First_year" value="false">No
+        <br>
         </p>
+        <input class="form_btn" type="submit" value="Submit">
         </form></div>
         ';
     } else {
