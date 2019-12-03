@@ -28,6 +28,7 @@ Tag_id integer,
 Hunter_id integer REFERENCES Hunter(Hunter_id),
 District_id integer REFERENCES District(District_id),
 Animal text,
+Sex text,
 Bow_rifle text,
 Liscense_year integer NOT NULL,
 PRIMARY KEY (Tag_id,Hunter_id,District_id));
@@ -245,15 +246,15 @@ VALUES  (111111,"password", "Jeff", "L", "Baxter", "R"),
         (108457,"password", "John", "Q", "Wonton", "R"),
         (123467,"password", "Beese", "M", "Churger", "N");
 
-INSERT INTO Tags (Tag_id, Hunter_id,District_id, Animal, Bow_rifle, Liscense_year)
-VALUES  (0001, 111111, 314, "Elk Bull", "Rifle", 2019),
-        (0002, 111111, 314, "Mule Deer Buck", "Rifle", 2018),
-        (0003, 111113, 314, "Elk Cow", "Bow", 2019),
-        (0004, 123467, 314, "Elk Bull", "Rifle", 2017),
-        (0005, 108457, 314, "Elk Cow", "Bow", 2019),
-        (0006, 108457, 314, "Bear", "Rifle", 2019),
-        (0007, 123457, 314, "White Tail Deer Doe", "Rifle", 2018),
-        (0008, 123457, 314, "Elk Cow", "Bow", 2020);
+INSERT INTO Tags (Tag_id, Hunter_id,District_id, Animal,Sex, Bow_rifle, Liscense_year)
+VALUES  (0001, 111111, 314, "elk","m", "Rifle", 2019),
+        (0002, 111111, 314, "deer","m", "Rifle", 2018),
+        (0003, 111113, 314, "elk","f", "Bow", 2019),
+        (0004, 123467, 314, "elk","m", "Rifle", 2017),
+        (0005, 108457, 314, "moose","f", "Rifle", 2019),
+        (0006, 108457, 314, "antelope","f", "Rifle", 2019),
+        (0007, 123457, 314, "deer","f", "Rifle", 2018),
+        (0008, 123457, 314, "elk","f", "Bow", 2020);
 
 INSERT INTO Employee (Ssn, Fname, Minit, Lname, Hours_worked, Employee_id, e_password)
 VALUES  (000112222, "Saul", "T", "Bowser", "40","sbowser","password"),

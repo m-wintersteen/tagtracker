@@ -33,7 +33,7 @@ session_start();
     if(isset( $_SESSION['id'] )){
         echo '<button id="logout_btn" onclick="window.location.href = \'meta/inc/logout.php\';">Log Out</button><h1>Welcome '.$_SESSION["Name"]."</h1>";
         
-        echo '<h2>Hunting Estimates</h2>';
+        echo '<div id="huntingEstimates"><h2>Hunting Estimates</h2>';
         echo '<form action="hunting_estimate.php" method="post">
         <p>Year: <input type="text" name="year">
         <br>
@@ -42,7 +42,36 @@ session_start();
         Animal: <input type="text" name="animal">
         </p>
         <input type="submit" value="Find Hunting Estimate">
-    </form>';
+    </form></div>';
+        
+        
+        //Get tags from current year
+        $currentYear = date("Y");
+        
+        $sql = "SELECT * FROM Tags WHERE Liscense_year = ".$currentYear." AND Hunter_id = ".$_SESSION['id'].";";
+        
+        $result = $dbConn->query($sql) or die("Data query error");
+        
+        $tags = array();
+        
+        if($result-> num_rows > 0){
+            while($row=$result->fetch_assoc()){
+                array_push($tags,$row["Animal"]);
+            }
+        }
+        
+        echo '<div id="newHuntingTrip"><h2>Record a New Hunting Trip</h2>
+        <form action="newHuntingTrip.php" method="post">
+        <p>Tags
+        <select name="tags">';
+        
+        foreach($tags as $tag){
+            echo '<option value="'.$tag.'">'.$tag.'</option>';
+        } 
+        echo '</select>
+        </p>
+        </form></div>
+        ';
     } else {
         echo '<button id="switch_btn" onclick="switchDiv()">Sign Up</button>
         <div id="signInDiv">

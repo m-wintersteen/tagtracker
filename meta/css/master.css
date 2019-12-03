@@ -61,6 +61,22 @@ body {
     background-color: #FFF;
 }
 
+#huntingEstimates {
+    width: 50%;
+    height: 50%;
+    background-color: rgba(28,68,105,.2);
+    text-align: center;
+    float: left;
+}
+
+#newHuntingTrip {
+    width: 50%;
+    height: 50%;
+    background-color:  rgba(87,56,29,.2);
+    text-align: center;
+    float: left;
+}
+
 table {
   border-collapse: collapse;
   width: 100%;
