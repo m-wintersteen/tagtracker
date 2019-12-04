@@ -16,14 +16,16 @@ sql2 = "\nINSERT INTO Tags (Tag_id, Hunter_id,District_id, Animal, Sex, Bow_rifl
 n=111113
 m=1009
 
-for i in range(100)
-  sql1 += "({},'{}','{}','{}','{}','{}'),\n".format(n+=1,"password", random.choice(first_names), random.choice(mid_init), random.choice(last_names), random.choice(RN))
-  for j in range(randint(0, 3))
-    sql2 += "({},{},{},'{}','{}','{}',{}),\n".format(m+=1, n, random.choice(districts), random.choice(animal), random.choice(sex), random.choice(Bow_rifle), 2019)
-   
+for i in range(100):
+  sql1 += "({},'{}','{}','{}','{}','{}'),\n".format(n,"password", random.choice(first_names), random.choice(mid_init), random.choice(last_names), random.choice(RN))
+  n += 1
+  for j in range(0, 3):
+    sql2 += "({},{},{},'{}','{}','{}',{}),\n".format(m, n, random.choice(districts), random.choice(animal), random.choice(sex), random.choice(Bow_rifle), 2019)
+    m += 1
+
 sql1+=";"
 sql2+=";"
-file = open("huntingDB.sql","a")
+file = open("testDB.sql","a")
 file.write(sql1)
 file.write(sql2)
 file.close()
