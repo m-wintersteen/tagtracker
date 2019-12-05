@@ -17,15 +17,19 @@ n=111113
 m=1009
 
 for i in range(100):
+  n+=1
   sql1 += "({},'{}','{}','{}','{}','{}'),\n".format(n,"password", random.choice(first_names), random.choice(mid_init), random.choice(last_names), random.choice(RN))
-  n += 1
-  for j in range(0, 3):
+  for j in range(random.randint(0, 3)):
+    m+=1
     sql2 += "({},{},{},'{}','{}','{}',{}),\n".format(m, n, random.choice(districts), random.choice(animal), random.choice(sex), random.choice(Bow_rifle), 2019)
-    m += 1
+   
+sql1+="(111214,'password','John','Q','Williams','R');"
+sql2+="(2000,111212,350,'deer','F','Rifle',2019);"
 
-sql1+=";"
-sql2+=";"
-file = open("testDB.sql","a")
+print(sql1)
+print(sql2)
+
+file = open("huntingDB.sql","a")
 file.write(sql1)
 file.write(sql2)
 file.close()
