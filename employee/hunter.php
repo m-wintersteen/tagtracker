@@ -13,10 +13,18 @@ session_start();
 <div class="container">
     <?php
         if ( ! empty( $_POST ) ) {
-            $options = [
-            "Resident" => $_POST['Resident'],
-            "District_id" => $_POST['district']
-            ];
+            if ( ! empty($_POST['Resident']) ){
+                $options = [
+                    "Resident" => $_POST['Resident'],
+                    "District_id" => $_POST['district']
+                ];
+            }
+            else{
+                $options = [
+                    "District_id" => $_POST['district']
+                ];
+            }
+            
             
             $sql = "SELECT DISTINCT Hunter.Hunter_id, Fname, Lname, Resident FROM Hunter, Tags WHERE ";
             

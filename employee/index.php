@@ -16,7 +16,7 @@ session_start();
         
         echo '<h2>Hunter Search</h2>';
         echo '<form action="hunter.php" method="post">
-        <p>Montana Resident: <input type="radio" name="Resident" value="R" checked>Resident
+        <p>Montana Resident: <input type="radio" name="Resident" value="R">Resident
         <input type="radio" name="Resident" value="N">Non Resident
         <br>
         Have Tag in District: <input type="text" name="district">

@@ -25,21 +25,96 @@ if ( ! empty( $_POST ) ) {
     $Harvest = $_POST['Harvest'];
     $First_year = $_POST['First_year'];
     
+    if($Days == NULL){
+        $Days = 0;
+    }
+    if($Num_points == NULL){
+        $Num_points = "NULL";
+    }
     
-    echo "Trip_id ".$newTripID." Tag_id ".$Tag_id." Hunter_id ".$hunterID." Harvest ".$Harvest." Points ".$Num_points." First_year ".$First_year." Days ".$Days;
+    //Query to add a new hunting trip
+    $sql = "INSERT INTO Hunting_trip (Trip_id, Tag_id, Hunter_id, Harvest, Points, First_year,Days) VALUE (".$newTripID.",".$Tag_id.",".$hunterID.",'".$Harvest."',".$Num_points.",'".$First_year."',".$Days.");";
     
-
-    /*$stmt = $dbConn->prepare("INSERT INTO Hunting_trip VALUE (?, ?, ?, ?, ?, ?)");
+    $result = $dbConn->query($sql) or die("Error");
     
-    $stmt->bind_param("isssss",$Hunter_id,$h_password,$Fname,$Minit,$Lname,$Resident);
+    //Get current values for Num_hunters, Residency, Total_harvest, Days_hunted, and Num for sex
+    //Get info about hunting tag
+    $sql = "SELECT District_id,Animal,Sex FROM `Tags` WHERE Tag_id = ".$Tag_id.";";
+    $result = $dbConn->query($sql) or die("Data query error");
+    $district = 0;
+    $animal = "";
+    $sex = "";
+    if($result-> num_rows > 0){
+        while($row=$result->fetch_assoc()){
+            $district = $row["District_id"];
+            $animal = $row["Animal"];
+            $sex = $row["Sex"];
+        }
+    }
     
-    $stmt->execute();
+    //Get hunter info
+    $sql = "SELECT Resident FROM `Hunter` WHERE Hunter_id = ".$hunterID.";";
+    $result = $dbConn->query($sql) or die("Data query error");
+    $residency = "";
+    if($result-> num_rows > 0){
+        while($row=$result->fetch_assoc()){
+            $residency = $row["Resident"];
+        }
+    }
     
-    printf("%d Row inserted.\n", $stmt->affected_rows);
+    $currentYear = date("Y");
     
-    $stmt->close();
+    $sexName = "";
+        
+    if($First_year == "true"){
+        $sexName = "Num_first_years";
+    }
+    else{
+        if($sex == "m"){
+            $sexName = "Num_males";
+        }
+        else{
+            $sexName = "Num_females";
+        }
+    }
+    
+    //Get current Harvest Estimate
+    $sql = "SELECT Num_hunters, Total_harvest, Days_hunted, ".$sexName." FROM Harvest_estimate WHERE Liscense_year = ".$currentYear." AND District = ".$district." AND Animal = '".$animal."' AND Residency = '".$residency."';";
+    $result = $dbConn->query($sql) or die("Data query error");
+    $Num_hunters = 0;
+    $Total_harvest = 0;
+    $Days_hunted = 0;
+    $NumSex = 0;
+    if($result-> num_rows > 0){
+        while($row=$result->fetch_assoc()){
+            $Num_hunters = $row["Num_hunters"];
+            $Total_harvest = $row["Total_harvest"];
+            $Days_hunted = $row["Days_hunted"];
+            $NumSex = $row[$sexName];
+        }
+    }
+    
+    //Set new values for Num_hunters, Residency, Total_harvest, Days_hunted, and Num for sex
+    $newNum_hunters = $Num_hunters + 1;
+    $newTotal_harvest = $Total_harvest;
+    $newNumSex = $NumSex;
+    if($Harvest == "true"){
+        $newTotal_harvest = $Total_harvest + 1;
+        $newNumSex = $NumSex + 1;
+    }
+    
+    $newDays_hunted = $Days_hunted + $Days;
+    
+    $nonRes = "R";
+    if($residency == "R"){
+        $nonRes = "N";
+    }
+    
+    //Update Harvest Estimates
+    $sql = "UPDATE Harvest_estimate SET Num_hunters = ".$newNum_hunters." , Total_harvest = ".$newTotal_harvest." , Days_hunted = ".$newDays_hunted." , ".$sexName." = ".$newNumSex." WHERE Liscense_year = ".$currentYear." and District = ".$district." and Animal = '".$animal."' and Residency != '".$nonRes."';";
+    
+    $result = $dbConn->query($sql) or die("Error");
     
     header("Location: http://localhost:8080/tagtracker/huntingTrip.php");
-    */
 }
 ?>

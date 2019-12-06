@@ -52,7 +52,7 @@ session_start();
         //Get tags from current year
         $currentYear = date("Y");
 
-        $sql = "SELECT * FROM Tags WHERE Liscense_year = ".$currentYear." AND Hunter_id = ".$_SESSION['id'].";";
+        $sql = "SELECT * FROM Tags WHERE NOT EXISTS (SELECT * FROM Hunting_trip WHERE Hunter_id = ".$_SESSION['id']." and Tags.Tag_id = Hunting_trip.Tag_id AND Harvest = 'true') AND Liscense_year = ".$currentYear." AND Hunter_id = ".$_SESSION['id'].";";
 
         $result = $dbConn->query($sql) or die("Data query error");
 
@@ -74,12 +74,12 @@ session_start();
         </div>
         Number of Days Hunted: <input type="text" name="Days">
         <br>
+        Did you Harvest?  <input type="radio" name="Harvest" value="true">Yes
+        <input type="radio" name="Harvest" value="false" checked>No
+        <br>
         Number of Points: <input type="text" name="Num_points">
         <br>
-        Did you Harvest?  <input type="radio" name="Harvest" value="true" checked>Yes
-        <input type="radio" name="Harvest" value="false">No
-        <br>
-        First Year?  <input type="radio" name="First_year" value="true" checked>Yes
+        First Year?  <input type="radio" name="First_year" value="true">Yes
         <input type="radio" name="First_year" value="false">No
         <br>
         </p>
