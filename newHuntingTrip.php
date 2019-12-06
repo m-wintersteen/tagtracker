@@ -70,7 +70,7 @@ if ( ! empty( $_POST ) ) {
         $sexName = "Num_first_years";
     }
     else{
-        if($sex == "m"){
+        if($sex == "M"){
             $sexName = "Num_males";
         }
         else{
